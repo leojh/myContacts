@@ -9,14 +9,16 @@ export default Ember.Component.extend({
     if (!filter) {return people;}
 
     return people
-      .filter(p => p.toLowerCase()
+      .filter(p => p.get('fullName').toLowerCase()
         .includes(filter.toLowerCase()
       ));
 
   }.property('filter'),
 
-  filterObs: function () {
-    console.log(this.get('filter'))
-  }.observes('filter')
+  actions: {
+    personSelected: function(person) {
+      this.sendAction('personSelected', person);
+    }
+  }
 
 });

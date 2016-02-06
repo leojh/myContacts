@@ -2,7 +2,7 @@
 
 <ul>
   {{#each filteredPeople as |person|}}
-    <li>{{person.fullName}}</li>
+    <li {{action 'personSelected' person}}>{{person.fullName}}</li>
   {{else}}
     No people found
   {{/each}}

@@ -1,9 +1,11 @@
 <h2 id="title">Welcome to Ember</h2>
 
-<button {{action 'saveAll'}}>
+{{#paper-button
+  raised=true
+  action="saveAll"}}
   Save All
-</button>
+{{/paper-button}}
 
-{{contact-list people=model}}
+{{contact-list people=model personSelected="goToPerson"}}
 
 {{outlet}}

@@ -5,7 +5,9 @@ export default Ember.Route.extend({
   model: function() {
     const store = this.get('store')
 
-    store.createRecord('person',{first: 'leo', last: 'hernandez'})
+    const leo = store.createRecord('person',{first: 'leo', last: 'hernandez'})
+    leo.set('last', 'smith')
+
     store.createRecord('person',{first: 'bob', last: 'smith'})
     store.createRecord('person',{first: 'alice', last: 'alice'})
 
@@ -16,6 +18,10 @@ export default Ember.Route.extend({
     saveAll: function() {
       this.store.all('person')
         .forEach(p => p.save())
+    },
+
+    goToPerson: function(person) {
+      this.transitionTo('person', person);
     }
   }
 
